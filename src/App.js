@@ -5,10 +5,12 @@ import Blogs from './pages/Blogs/Blogs'
 import SignIn from './pages/Login/SignIn/SignIn'
 import SignUp from './pages/Login/SignUp/SignUp'
 import NotFound from './pages/NotFound/NotFound'
+import MyNavbar from './components/MyNavbar/MyNavbar'
 
 function App() {
   return (
-    <div className='App'>
+    <div>
+      <MyNavbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
