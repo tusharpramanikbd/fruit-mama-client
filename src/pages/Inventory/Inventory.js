@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './Inventory.css'
 
 const Inventory = () => {
@@ -11,6 +11,7 @@ const Inventory = () => {
   const [quantity, setQuantity] = useState(0)
   const [description, setDescription] = useState('')
   const [supplier, setSupplier] = useState('')
+  const navigate = useNavigate()
 
   const updateFruitQuantity = (fruit) => {
     fetch(`https://young-citadel-59712.herokuapp.com/fruits/${id}`, {
@@ -41,6 +42,10 @@ const Inventory = () => {
     event.target.reset()
   }
 
+  const manageInventoryButtonClickHandler = () => {
+    navigate('/manageinventory')
+  }
+
   useEffect(() => {
     fetch(`https://young-citadel-59712.herokuapp.com/fruits/${id}`)
       .then((res) => res.json())
@@ -58,7 +63,8 @@ const Inventory = () => {
       <div className='inventory-details-container'>
         <img src={image} alt='fruit' className='inventory-image' />
         <h5 className='my-3'>{name}</h5>
-        <h6 className='text-start'>Cost: ${price}</h6>
+        <h6 className='text-start'>Id: {id}</h6>
+        <h6 className='text-start'>Price: ${price}</h6>
         <h6 className='text-start'>Quantity: {quantity}</h6>
         <h6 className='text-start'>Supplier Name: {supplier}</h6>
         <p className='fruit-item-text text-start'>
@@ -81,6 +87,12 @@ const Inventory = () => {
           </Form.Group>
           <button className='inventory-btn'>Restock</button>
         </Form>
+        <button
+          onClick={manageInventoryButtonClickHandler}
+          className='inventory-btn mt-3'
+        >
+          Manage Inventory
+        </button>
       </div>
     </div>
   )

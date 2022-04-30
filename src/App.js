@@ -7,6 +7,7 @@ import SignUp from './pages/Login/SignUp/SignUp'
 import NotFound from './pages/NotFound/NotFound'
 import MyNavbar from './components/MyNavbar/MyNavbar'
 import Inventory from './pages/Inventory/Inventory'
+import ManageInventory from './pages/ManageInventory/ManageInventory'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='inventory/:id' element={<Inventory />} />
+        <Route path='/manageinventory' element={<ManageInventory />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
