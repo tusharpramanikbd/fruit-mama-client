@@ -12,6 +12,22 @@ const Inventory = () => {
   const [description, setDescription] = useState('')
   const [supplier, setSupplier] = useState('')
 
+  const deliverButtonClickHandler = (event) => {
+    const newQuantity = quantity - 1
+    const fruit = { newQuantity }
+    fetch(`http://localhost:5000/fruits/${id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(fruit),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setQuantity(newQuantity)
+      })
+  }
+
   const restockFromSubmitHandler = (event) => {
     event.preventDefault()
   }
@@ -39,7 +55,9 @@ const Inventory = () => {
         <p className='fruit-item-text text-start'>
           <small>{description}</small>
         </p>
-        <button className='inventory-btn'>Delivered</button>
+        <button onClick={deliverButtonClickHandler} className='inventory-btn'>
+          Delivered
+        </button>
       </div>
       <div>
         <Form onSubmit={restockFromSubmitHandler}>
