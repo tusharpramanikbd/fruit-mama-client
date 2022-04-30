@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Mango",
+    "image": "https://img.freepik.com/free-photo/mango-tree-with-nature_1150-12252.jpg?w=740",
+    "price": 450,
+    "desc": "A mango is an edible stone fruit produced by the tropical tree Mangifera indica which is believed to have originated from the region between northwestern Myanmar, Bangladesh, and northeastern India.",
+    "quantity": 100,
+    "supplier": "Marciana Iosifu"
+  },
+  {
+    "id": 2,
+    "name": "Apple",
+    "image": "https://img.freepik.com/free-photo/front-view-fresh-red-apples-ripe-mellow-fruits-white-desk-fruit-color-tree-fresh-plant-red_140725-110203.jpg?w=740",
+    "price": 500,
+    "desc": "An apple is an edible fruit produced by an apple tree. Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today.",
+    "quantity": 150,
+    "supplier": "Amos Murray"
+  },
+  {
+    "id": 3,
+    "name": "Orange",
+    "image": "https://img.freepik.com/free-photo/delicious-mandarin_144627-27546.jpg?w=740",
+    "price": 600,
+    "desc": "An orange is a fruit of various citrus species in the family Rutaceae; it primarily refers to Citrus × sinensis, which is also called sweet orange, to distinguish it from the related Citrus × aurantium, referred to as bitter orange.",
+    "quantity": 200,
+    "supplier": "Boyd Bell"
+  },
+  {
+    "id": 4,
+    "name": "Banana",
+    "image": "https://img.freepik.com/free-photo/top-close-view-delicious-bananas-brown-fruit-berry-exotic-food_140725-18876.jpg?w=740",
+    "price": 600,
+    "desc": "A banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called 'plantains', distinguishing them from dessert bananas.",
+    "quantity": 250,
+    "supplier": "Jeffery Watson"
+  },
+  {
+    "id": 5,
+    "name": "Strawberry",
+    "image": "https://img.freepik.com/free-photo/strawberries_1194-2304.jpg?w=740",
+    "price": 600,
+    "desc": "The garden strawberry is a widely grown hybrid species of the genus Fragaria, collectively known as the strawberries, which are cultivated worldwide for their fruit. The fruit is widely appreciated for its characteristic aroma, bright red color, juicy texture, and sweetness.",
+    "quantity": 300,
+    "supplier": "Horace Yates"
+  },
+  {
+    "id": 6,
+    "name": "Pineapple",
+    "image": "https://img.freepik.com/free-photo/fresh-pineapple-dark-wooden-surface_1150-42287.jpg?w=740",
+    "price": 600,
+    "desc": "The pineapple is a tropical plant with an edible fruit; it is the most economically significant plant in the family Bromeliaceae. The pineapple is indigenous to South America, where it has been cultivated for many centuries.",
+    "quantity": 350,
+    "supplier": "Shane Hughes"
+  }
+]

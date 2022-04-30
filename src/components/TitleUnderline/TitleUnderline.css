@@ -1,0 +1,8 @@
+.title-underline {
+  width: 120px;
+  height: 5px;
+  background-color: green;
+  margin: 0 auto;
+  margin-bottom: 2.5rem;
+  border-radius: 10px;
+}
