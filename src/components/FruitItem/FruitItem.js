@@ -4,10 +4,10 @@ import './FruitItem.css'
 
 const FruitItem = (props) => {
   const navigate = useNavigate()
-  const handleUpdateStock = () => {
-    navigate('/signin')
+  const handleUpdateStock = (id) => {
+    navigate(`/inventory/${id}`)
   }
-  const { name, image, price, desc, quantity, supplier } = props.fruit
+  const { _id, name, image, price, desc, quantity, supplier } = props.fruit
 
   return (
     <div className='fruit-item-container'>
@@ -19,7 +19,7 @@ const FruitItem = (props) => {
       <p className='fruit-item-text text-start'>
         <small>{desc}</small>
       </p>
-      <button onClick={handleUpdateStock} className='fruit-item-btn'>
+      <button onClick={() => handleUpdateStock(_id)} className='fruit-item-btn'>
         Update Stock
       </button>
     </div>

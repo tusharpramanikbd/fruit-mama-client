@@ -9,7 +9,7 @@ const FruitItems = () => {
     <div id='inventory'>
       <section className='container section-fruit-items'>
         {fruitItems.map((fruit) => {
-          return <FruitItem key={fruit.id} fruit={fruit} />
+          return <FruitItem key={fruit._id} fruit={fruit} />
         })}
       </section>
     </div>
