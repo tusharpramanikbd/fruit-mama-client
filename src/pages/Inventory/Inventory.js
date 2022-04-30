@@ -13,7 +13,7 @@ const Inventory = () => {
   const [supplier, setSupplier] = useState('')
 
   const updateFruitQuantity = (fruit) => {
-    fetch(`http://localhost:5000/fruits/${id}`, {
+    fetch(`https://young-citadel-59712.herokuapp.com/fruits/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -42,7 +42,7 @@ const Inventory = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/fruits/${id}`)
+    fetch(`https://young-citadel-59712.herokuapp.com/fruits/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.name)
