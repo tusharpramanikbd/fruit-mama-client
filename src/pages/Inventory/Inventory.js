@@ -12,9 +12,7 @@ const Inventory = () => {
   const [description, setDescription] = useState('')
   const [supplier, setSupplier] = useState('')
 
-  const deliverButtonClickHandler = (event) => {
-    const newQuantity = quantity - 1
-    const fruit = { newQuantity }
+  const updateFruitQuantity = (fruit) => {
     fetch(`http://localhost:5000/fruits/${id}`, {
       method: 'PUT',
       headers: {
@@ -24,12 +22,23 @@ const Inventory = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setQuantity(newQuantity)
+        setQuantity(fruit.newQuantity)
       })
+  }
+
+  const deliverButtonClickHandler = () => {
+    const newQuantity = quantity - 1
+    const fruit = { newQuantity }
+    updateFruitQuantity(fruit)
   }
 
   const restockFromSubmitHandler = (event) => {
     event.preventDefault()
+    const restockAmount = parseInt(event.target.restock.value)
+    const newQuantity = quantity + restockAmount
+    const fruit = { newQuantity }
+    updateFruitQuantity(fruit)
+    event.target.reset()
   }
 
   useEffect(() => {
@@ -65,6 +74,7 @@ const Inventory = () => {
             <Form.Label>Restock The Items</Form.Label>
             <Form.Control
               type='number'
+              name='restock'
               placeholder='Enter Item Number'
               className='w-75 mx-auto'
             />
