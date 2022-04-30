@@ -1,0 +1,34 @@
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('https://img.freepik.com/free-photo/mixed-fruits-with-apple-banana-orange-other_74190-938.jpg?w=740');
+  min-height: calc(100vh - 56px);
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-container {
+  text-align: center;
+}
+.banner-container h1 {
+  color: aquamarine;
+}
+.banner-container > h3 {
+  color: whitesmoke;
+}
+.banner-container a {
+  text-decoration: none;
+  background-color: blueviolet;
+  padding: 1rem 2rem;
+  display: inline-block;
+  border-radius: 10px;
+  color: white;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+.banner-container a:hover {
+  color: white;
+  background-color: rgb(166, 91, 236);
+}
