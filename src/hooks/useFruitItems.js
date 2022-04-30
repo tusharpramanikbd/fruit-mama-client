@@ -4,7 +4,7 @@ const useFruitItems = () => {
   const [fruitItems, setFruitItems] = useState([])
 
   useEffect(() => {
-    fetch('fruitData.json')
+    fetch('http://localhost:5000/fruits')
       .then((res) => res.json())
       .then((data) => setFruitItems(data))
   }, [])
