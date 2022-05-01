@@ -6,10 +6,25 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import useFruitItems from '../../hooks/useFruitItems'
 
 const ManageInventory = () => {
-  const [fruitItems] = useFruitItems()
+  const [fruitItems, setFruitItems] = useFruitItems()
 
   const trashButtonClickHandler = (id) => {
-    console.log(id)
+    const proceed = window.confirm('Are you sure want to delete?')
+    if (proceed) {
+      const url = `http://localhost:5000/fruits/${id}`
+      fetch(url, {
+        method: 'DELETE',
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            const filteredFruitItems = fruitItems.filter(
+              (fruit) => fruit._id !== id
+            )
+            setFruitItems(filteredFruitItems)
+          }
+        })
+    }
   }
 
   return (
