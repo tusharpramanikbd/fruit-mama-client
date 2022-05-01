@@ -4,8 +4,11 @@ import './ManageInventory.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import useFruitItems from '../../hooks/useFruitItems'
+import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
+import { useNavigate } from 'react-router-dom'
 
 const ManageInventory = () => {
+  const navigate = useNavigate()
   const [fruitItems, setFruitItems] = useFruitItems()
 
   const trashButtonClickHandler = (id) => {
@@ -27,8 +30,19 @@ const ManageInventory = () => {
     }
   }
 
+  const addNewItemClickHandler = () => {
+    navigate('/addinventoryitem')
+  }
+
   return (
     <div className='container'>
+      <h2 className='text-center mt-3'>Inventory Items</h2>
+      <TitleUnderline />
+      <div className='text-end'>
+        <button onClick={addNewItemClickHandler} className='btn-add-new-item'>
+          Add New Item
+        </button>
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>

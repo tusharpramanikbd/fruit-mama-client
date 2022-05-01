@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound/NotFound'
 import MyNavbar from './components/MyNavbar/MyNavbar'
 import Inventory from './pages/Inventory/Inventory'
 import ManageInventory from './pages/ManageInventory/ManageInventory'
+import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='inventory/:id' element={<Inventory />} />
         <Route path='/manageinventory' element={<ManageInventory />} />
+        <Route path='/addinventoryitem' element={<AddInventoryItem />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
