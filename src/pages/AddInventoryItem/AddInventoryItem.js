@@ -7,7 +7,7 @@ import './AddInventoryItem.css'
 const AddInventoryItem = () => {
   const { register, handleSubmit } = useForm()
   const addInventoryItemOnSubmit = (fruitData, event) => {
-    fetch('http://localhost:5000/fruits', {
+    fetch('https://young-citadel-59712.herokuapp.com/fruits', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

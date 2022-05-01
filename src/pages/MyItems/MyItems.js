@@ -1,15 +1,23 @@
-import React from 'react'
-import { Table } from 'react-bootstrap'
-import './ManageInventory.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import useFruitItems from '../../hooks/useFruitItems'
+import React, { useEffect, useState } from 'react'
+import { Table } from 'react-bootstrap'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
-import { useNavigate } from 'react-router-dom'
+import './MyItems.css'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const ManageInventory = () => {
-  const navigate = useNavigate()
-  const [fruitItems, setFruitItems] = useFruitItems()
+const MyItems = () => {
+  const email = 'tusharpramanikbd@gmail.com'
+
+  const [fruitItems, setFruitItems] = useState([])
+
+  useEffect(() => {
+    const url = `https://young-citadel-59712.herokuapp.com/fruits?email=${email}`
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setFruitItems(data)
+      })
+  }, [])
 
   const trashButtonClickHandler = (id) => {
     const proceed = window.confirm('Are you sure want to delete?')
@@ -30,24 +38,14 @@ const ManageInventory = () => {
     }
   }
 
-  const addNewItemClickHandler = () => {
-    navigate('/addinventoryitem')
-  }
-
   return (
     <div className='container'>
-      <h2 className='text-center mt-3'>Inventory Items</h2>
+      <h2 className='text-center mt-3'>My Items</h2>
       <TitleUnderline />
-      <div className='text-end'>
-        <button onClick={addNewItemClickHandler} className='btn-add-new-item'>
-          Add New Item
-        </button>
-      </div>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Email</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Action</th>
@@ -58,7 +56,6 @@ const ManageInventory = () => {
             return (
               <tr key={fruit._id}>
                 <td>{fruit.name}</td>
-                <td>{fruit.email}</td>
                 <td>{fruit.price}</td>
                 <td>{fruit.quantity}</td>
                 <td className='text-center'>
@@ -77,4 +74,4 @@ const ManageInventory = () => {
   )
 }
 
-export default ManageInventory
+export default MyItems

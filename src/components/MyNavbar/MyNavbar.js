@@ -63,6 +63,18 @@ const MyNavbar = () => {
                   color: isActive ? 'white' : '',
                 }
               }}
+              to='/myitems'
+            >
+              My Items
+            </NavLink>
+
+            <NavLink
+              className='navbar-links'
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? 'white' : '',
+                }
+              }}
               to='/blogs'
             >
               Blogs

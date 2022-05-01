@@ -8,9 +8,11 @@ const FruitItems = () => {
   return (
     <div id='inventory'>
       <section className='container section-fruit-items'>
-        {fruitItems.map((fruit) => {
-          return <FruitItem key={fruit._id} fruit={fruit} />
-        })}
+        {fruitItems
+          .map((fruit) => {
+            return <FruitItem key={fruit._id} fruit={fruit} />
+          })
+          .slice(0, 6)}
       </section>
     </div>
   )
