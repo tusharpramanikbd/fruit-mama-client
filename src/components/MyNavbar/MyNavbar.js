@@ -39,6 +39,30 @@ const MyNavbar = () => {
                   color: isActive ? 'white' : '',
                 }
               }}
+              to='/manageinventory'
+            >
+              Manage Items
+            </NavLink>
+
+            <NavLink
+              className='navbar-links'
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? 'white' : '',
+                }
+              }}
+              to='/addinventoryitem'
+            >
+              Add Item
+            </NavLink>
+
+            <NavLink
+              className='navbar-links'
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? 'white' : '',
+                }
+              }}
               to='/blogs'
             >
               Blogs

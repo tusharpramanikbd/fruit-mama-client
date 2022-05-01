@@ -37,6 +37,7 @@ const AddInventoryItem = () => {
               type='text'
               placeholder='Enter Name'
               {...register('name')}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicPrice'>
@@ -45,6 +46,7 @@ const AddInventoryItem = () => {
               type='number'
               placeholder='Price'
               {...register('price')}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicQuantity'>
@@ -53,6 +55,7 @@ const AddInventoryItem = () => {
               type='number'
               placeholder='Quantity'
               {...register('quantity')}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicSupplierName'>
@@ -61,6 +64,7 @@ const AddInventoryItem = () => {
               type='text'
               placeholder='Supplier Name'
               {...register('supplier')}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -69,6 +73,7 @@ const AddInventoryItem = () => {
               type='email'
               placeholder='Email'
               {...register('email')}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicImageURL'>
@@ -77,6 +82,7 @@ const AddInventoryItem = () => {
               type='text'
               placeholder='Image URL'
               {...register('image')}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicPrice'>
@@ -86,6 +92,7 @@ const AddInventoryItem = () => {
               rows='3'
               placeholder='Description'
               {...register('desc')}
+              required
             />
           </Form.Group>
           <div className='text-center'>
