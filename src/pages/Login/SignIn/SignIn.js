@@ -12,7 +12,7 @@ const SignIn = () => {
       <div className='login-container'>
         <div>
           <Form className='border p-5 rounded shadow login-form'>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
+            <Form.Group className='mb-3 text-start' controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type='email'
@@ -21,7 +21,10 @@ const SignIn = () => {
                 required
               />
             </Form.Group>
-            <Form.Group className='mb-3' controlId='formBasicPassword'>
+            <Form.Group
+              className='mb-3 text-start'
+              controlId='formBasicPassword'
+            >
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type='password'
@@ -32,7 +35,7 @@ const SignIn = () => {
             </Form.Group>
             {/* {errorElement} */}
             <Button variant='primary' type='submit'>
-              Login
+              SignIn
             </Button>
           </Form>
           <p className='signup-toggle'>
