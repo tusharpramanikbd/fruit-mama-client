@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './SocialLogin.css'
 import google from '../../../images/social/google.png'
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
@@ -26,9 +26,12 @@ const SocialLogin = () => {
     errorElement = <p className='text-danger'>Error: {error.message}</p>
   }
 
-  if (user) {
-    navigate(from, { replace: true })
-  }
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true })
+    }
+  }, [user, from, navigate])
+
   return (
     <>
       <button onClick={() => signInWithGoogle()} className='btn-social shadow'>

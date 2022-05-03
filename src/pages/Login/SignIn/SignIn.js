@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useLocation, useNavigate } from 'react-router-dom'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
+import auth from '../../../firebase.init'
 import SocialLogin from '../SocialLogin/SocialLogin'
+import Loading from '../../../components/Loading/Loading'
 import './SignIn.css'
 
 const SignIn = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth)
   const navigate = useNavigate()
+  const location = useLocation()
+
+  // if location has pathname then go to there otherwise home
+  const from = location.state?.from?.pathname || '/'
+  let errorElement
+
+  const handleLogin = (event) => {
+    event.preventDefault()
+    const email = event.target.email.value
+    const password = event.target.password.value
+
+    signInWithEmailAndPassword(email, password)
+  }
 
   const navigateToSignup = () => {
     navigate('/signup')
@@ -15,6 +33,19 @@ const SignIn = () => {
   const navigateToForgotPassword = () => {
     navigate('/resetpassword')
   }
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true })
+    }
+  }, [user, from, navigate])
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    errorElement = <p className='text-danger'>Error: {error.message}</p>
+  }
 
   return (
     <div className='container'>
@@ -22,7 +53,10 @@ const SignIn = () => {
       <TitleUnderline />
       <div className='login-container'>
         <div>
-          <Form className='border p-5 rounded shadow login-form'>
+          <Form
+            onSubmit={handleLogin}
+            className='border p-5 rounded shadow login-form'
+          >
             <Form.Group className='mb-3 text-start' controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -44,7 +78,7 @@ const SignIn = () => {
                 required
               />
             </Form.Group>
-            {/* {errorElement} */}
+            {errorElement}
             <Button variant='primary' type='submit'>
               SignIn
             </Button>
