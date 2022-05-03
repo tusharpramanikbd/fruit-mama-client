@@ -2,9 +2,16 @@ import React from 'react'
 import './MyNavbar.css'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init'
+import { signOut } from 'firebase/auth'
 
 const MyNavbar = () => {
+  const [user] = useAuthState(auth)
   const navigate = useNavigate()
+  const handleSignout = () => {
+    signOut(auth)
+  }
   return (
     <Navbar bg='dark' expand='lg' variant='dark'>
       <Container>
@@ -32,41 +39,47 @@ const MyNavbar = () => {
               Home
             </NavLink>
 
-            <NavLink
-              className='navbar-links'
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? 'white' : '',
-                }
-              }}
-              to='/manageinventory'
-            >
-              Manage Items
-            </NavLink>
+            {/* Conditional rendering */}
+            {/* If the use is present manage items, add item and my items links will be visible */}
+            {user ? (
+              <Nav>
+                <NavLink
+                  className='navbar-links'
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? 'white' : '',
+                    }
+                  }}
+                  to='/manageinventory'
+                >
+                  Manage Items
+                </NavLink>
 
-            <NavLink
-              className='navbar-links'
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? 'white' : '',
-                }
-              }}
-              to='/addinventoryitem'
-            >
-              Add Item
-            </NavLink>
+                <NavLink
+                  className='navbar-links'
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? 'white' : '',
+                    }
+                  }}
+                  to='/addinventoryitem'
+                >
+                  Add Item
+                </NavLink>
 
-            <NavLink
-              className='navbar-links'
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? 'white' : '',
-                }
-              }}
-              to='/myitems'
-            >
-              My Items
-            </NavLink>
+                <NavLink
+                  className='navbar-links'
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? 'white' : '',
+                    }
+                  }}
+                  to='/myitems'
+                >
+                  My Items
+                </NavLink>
+              </Nav>
+            ) : null}
 
             <NavLink
               className='navbar-links'
@@ -80,29 +93,39 @@ const MyNavbar = () => {
               Blogs
             </NavLink>
 
-            <NavLink
-              className='navbar-links'
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? 'white' : '',
-                }
-              }}
-              to='/signin'
-            >
-              SignIn
-            </NavLink>
+            {/* Conditional rendering */}
+            {/* If the use is present only signout button will be visible */}
+            {user ? (
+              <button onClick={handleSignout} className='btn-signout'>
+                Signout
+              </button>
+            ) : (
+              <Nav>
+                <NavLink
+                  className='navbar-links'
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? 'white' : '',
+                    }
+                  }}
+                  to='/signin'
+                >
+                  SignIn
+                </NavLink>
 
-            <NavLink
-              className='navbar-links'
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? 'white' : '',
-                }
-              }}
-              to='/signup'
-            >
-              SignUp
-            </NavLink>
+                <NavLink
+                  className='navbar-links'
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? 'white' : '',
+                    }
+                  }}
+                  to='/signup'
+                >
+                  SignUp
+                </NavLink>
+              </Nav>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

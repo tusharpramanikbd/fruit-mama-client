@@ -6,3 +6,11 @@
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
 }
+.btn-signout {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+}
+.btn-signout:hover {
+  color: #0d6efd;
+}
