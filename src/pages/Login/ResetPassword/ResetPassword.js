@@ -1,31 +1,58 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth'
+import auth from '../../../firebase.init'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './ResetPassword.css'
 
 const ResetPassword = () => {
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth)
+
+  let errorElement
+
+  if (error) {
+    errorElement = <p className='text-danger'>Error: {error.message}</p>
+  }
+
+  const handleForgotPassword = async (event) => {
+    event.preventDefault()
+    const email = event.target.email.value
+    if (email) {
+      // if email is present then sent password reset email and then toast
+      await sendPasswordResetEmail(email)
+      toast('Sent email')
+    } else {
+      toast('Please enter your email address')
+    }
+  }
+
   return (
     <div>
       <div className='container resetpassword-container'>
         <h2 className='text-center mt-3'>Reset Password</h2>
         <TitleUnderline />
         <div>
-          <Form className='border p-5 rounded shadow resetpassword-form'>
+          <Form
+            onSubmit={handleForgotPassword}
+            className='border p-5 rounded shadow resetpassword-form'
+          >
             <Form.Group className='mb-3 text-start' controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type='email'
                 name='email'
                 placeholder='Enter email'
-                required
               />
             </Form.Group>
-            {/* {errorElement} */}
+            {errorElement}
             <Button variant='primary' type='submit'>
               Reset Password
             </Button>
           </Form>
-          {/* <ToastContainer /> */}
+          <ToastContainer />
         </div>
       </div>
     </div>
