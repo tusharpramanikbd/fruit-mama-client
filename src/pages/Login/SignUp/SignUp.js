@@ -3,8 +3,15 @@ import './SignUp.css'
 import SocialLogin from '../SocialLogin/SocialLogin'
 import { Button, Form } from 'react-bootstrap'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+  const navigate = useNavigate()
+
+  const navigateToLogin = () => {
+    navigate('/signin')
+  }
+
   return (
     <div className='container'>
       <h2 className='text-center mt-3'>SignUp User</h2>
@@ -58,7 +65,8 @@ const SignUp = () => {
             </Button>
           </Form>
           <p className='login-toggle'>
-            Already have an account? <span>Please SignIn</span>
+            Already have an account?{' '}
+            <span onClick={navigateToLogin}>Please SignIn</span>
           </p>
         </div>
         <div className='my-3'>

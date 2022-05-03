@@ -10,6 +10,7 @@ import Inventory from './pages/Inventory/Inventory'
 import ManageInventory from './pages/ManageInventory/ManageInventory'
 import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem'
 import MyItems from './pages/MyItems/MyItems'
+import ResetPassword from './pages/Login/ResetPassword/ResetPassword'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/resetpassword' element={<ResetPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

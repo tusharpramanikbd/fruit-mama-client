@@ -1,10 +1,21 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
 import SocialLogin from '../SocialLogin/SocialLogin'
 import './SignIn.css'
 
 const SignIn = () => {
+  const navigate = useNavigate()
+
+  const navigateToSignup = () => {
+    navigate('/signup')
+  }
+
+  const navigateToForgotPassword = () => {
+    navigate('/resetpassword')
+  }
+
   return (
     <div className='container'>
       <h2 className='text-center mt-3'>SignIn User</h2>
@@ -39,10 +50,12 @@ const SignIn = () => {
             </Button>
           </Form>
           <p className='signup-toggle'>
-            Don't have an account? <span>Please Signup</span>
+            Don't have an account?{' '}
+            <span onClick={navigateToSignup}>Please Signup</span>
           </p>
           <p className='reset-password'>
-            Forgot Password? <span>Reset Password</span>
+            Forgot Password?{' '}
+            <span onClick={navigateToForgotPassword}>Reset Password</span>
           </p>
         </div>
         <div className='my-3'>
