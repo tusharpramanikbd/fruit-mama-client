@@ -4,9 +4,12 @@ import { Table } from 'react-bootstrap'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import './MyItems.css'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init'
 
 const MyItems = () => {
-  const email = 'tusharpramanikbd@gmail.com'
+  const [user] = useAuthState(auth)
+  const email = user.email
 
   const [fruitItems, setFruitItems] = useState([])
 
@@ -17,7 +20,7 @@ const MyItems = () => {
       .then((data) => {
         setFruitItems(data)
       })
-  }, [])
+  }, [email])
 
   const trashButtonClickHandler = (id) => {
     const proceed = window.confirm('Are you sure want to delete?')

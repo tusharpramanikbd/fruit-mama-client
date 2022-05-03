@@ -11,6 +11,7 @@ import ManageInventory from './pages/ManageInventory/ManageInventory'
 import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem'
 import MyItems from './pages/MyItems/MyItems'
 import ResetPassword from './pages/Login/ResetPassword/ResetPassword'
+import RequireAuth from './components/RequireAuth/RequireAuth'
 
 function App() {
   return (
@@ -19,10 +20,38 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='inventory/:id' element={<Inventory />} />
-        <Route path='/manageinventory' element={<ManageInventory />} />
-        <Route path='/addinventoryitem' element={<AddInventoryItem />} />
-        <Route path='/myitems' element={<MyItems />} />
+        <Route
+          path='inventory/:id'
+          element={
+            <RequireAuth>
+              <Inventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/manageinventory'
+          element={
+            <RequireAuth>
+              <ManageInventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/addinventoryitem'
+          element={
+            <RequireAuth>
+              <AddInventoryItem />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/myitems'
+          element={
+            <RequireAuth>
+              <MyItems />
+            </RequireAuth>
+          }
+        />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
