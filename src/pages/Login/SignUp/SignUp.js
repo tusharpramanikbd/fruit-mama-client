@@ -1,15 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SignUp.css'
 import SocialLogin from '../SocialLogin/SocialLogin'
 import { Button, Form } from 'react-bootstrap'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
 import { useNavigate } from 'react-router-dom'
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from 'react-firebase-hooks/auth'
+import auth from '../../../firebase.init'
+import { signOut } from 'firebase/auth'
+import Loading from '../../../components/Loading/Loading'
 
 const SignUp = () => {
+  const [createUserWithEmailAndPassword, user, loading, userError] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
+
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth)
+
+  const [agree, setAgree] = useState(false)
+
   const navigate = useNavigate()
+
+  let errorElement
+
+  const handleRegister = async (event) => {
+    event.preventDefault()
+    const name = event.target.name.value
+    const email = event.target.email.value
+    const password = event.target.password.value
+
+    // first create user with email and password and wait for return
+    await createUserWithEmailAndPassword(email, password)
+    // Then update profile with name and wait for return
+    await updateProfile({ displayName: name })
+    // Then sign out so that after signup user does not get automatically signed in.
+    signOut(auth)
+    navigate('/signin')
+  }
 
   const navigateToLogin = () => {
     navigate('/signin')
+  }
+
+  if (loading || updating) {
+    return <Loading />
+  }
+
+  if (userError || updateError) {
+    errorElement = (
+      <p className='text-danger'>
+        Error: {userError?.message} {updateError?.message}
+      </p>
+    )
   }
 
   return (
@@ -18,7 +61,10 @@ const SignUp = () => {
       <TitleUnderline />
       <div className='signup-container'>
         <div>
-          <Form className='border p-5 rounded shadow signup-form'>
+          <Form
+            onSubmit={handleRegister}
+            className='border p-5 rounded shadow signup-form'
+          >
             <Form.Group className='mb-3 text-start' controlId='formBasicName'>
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -54,13 +100,14 @@ const SignUp = () => {
               controlId='formBasicCheckbox'
             >
               <Form.Check
+                onClick={() => setAgree(!agree)}
                 type='checkbox'
                 name='terms'
                 label='Accept Terms and Conditions'
               />
             </Form.Group>
-            {/* {errorElement} */}
-            <Button variant='primary' type='submit'>
+            {errorElement}
+            <Button disabled={!agree} variant='primary' type='submit'>
               SignUp
             </Button>
           </Form>
