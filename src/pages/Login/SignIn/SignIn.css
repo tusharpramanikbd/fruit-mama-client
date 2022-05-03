@@ -1,0 +1,29 @@
+.login-container {
+  text-align: center;
+  min-height: calc(100vh - 56px);
+}
+
+.signup-toggle,
+.reset-password {
+  margin-top: 1rem;
+}
+
+.signup-toggle span,
+.reset-password span {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  .login-form {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .login-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr auto 0.75fr;
+  }
+}

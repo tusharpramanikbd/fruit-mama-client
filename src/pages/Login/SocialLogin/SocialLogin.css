@@ -1,0 +1,12 @@
+.btn-social {
+  border: 1px solid gray;
+  background-color: blueviolet;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 500;
+  color: white;
+  transition: background-color 0.2s linear;
+}
+.btn-social:hover {
+  background-color: rgb(166, 91, 236);
+}

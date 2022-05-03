@@ -1,11 +1,15 @@
 import React from 'react'
 import './SocialLogin.css'
+import google from '../../../images/social/google.png'
 
 const SocialLogin = () => {
   return (
-    <div>
-      <h1>This is social login page</h1>
-    </div>
+    <>
+      <button className='btn-social shadow'>
+        <img src={google} alt='google' /> &nbsp; Signin With Google
+      </button>
+      {/* {errorElement} */}
+    </>
   )
 }
 

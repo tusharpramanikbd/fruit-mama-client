@@ -26,7 +26,7 @@ const AddInventoryItem = () => {
       <TitleUnderline />
       <div>
         <Form
-          className='w-50 mx-auto border p-3 rounded shadow mb-3'
+          className='w-50 mx-auto border p-5 rounded shadow mb-3'
           onSubmit={handleSubmit((data, event) =>
             addInventoryItemOnSubmit(data, event)
           )}
