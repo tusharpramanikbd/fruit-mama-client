@@ -6,12 +6,12 @@ import { getAuth } from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBLko18cbrCLemRVtiQqxIAGIR726CEzPk',
-  authDomain: 'fruit-mama-client.firebaseapp.com',
-  projectId: 'fruit-mama-client',
-  storageBucket: 'fruit-mama-client.appspot.com',
-  messagingSenderId: '208722117328',
-  appId: '1:208722117328:web:5d513777d0bfabefc794d5',
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 }
 
 // Initialize Firebase
