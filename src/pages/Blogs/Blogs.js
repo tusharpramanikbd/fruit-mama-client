@@ -1,9 +1,12 @@
 import React from 'react'
+import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import './Blogs.css'
 
 const Blogs = () => {
   return (
     <div className='container blogs-container'>
+      <h2 className='text-center mt-3'>Question-Answer Section</h2>
+      <TitleUnderline />
       <h2 className='mt-5'>Difference between javascript and nodejs?</h2>
       <p>
         Javascript is a lightweight, object-oriented scripting language that is

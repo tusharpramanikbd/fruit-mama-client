@@ -85,7 +85,7 @@ const AddInventoryItem = () => {
               required
             />
           </Form.Group>
-          <Form.Group className='mb-3' controlId='formBasicPrice'>
+          <Form.Group className='mb-3' controlId='formBasicDescription'>
             <Form.Label>Description</Form.Label>
             <Form.Control
               as='textarea'
