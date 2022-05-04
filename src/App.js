@@ -12,6 +12,7 @@ import AddInventoryItem from './pages/AddInventoryItem/AddInventoryItem'
 import MyItems from './pages/MyItems/MyItems'
 import ResetPassword from './pages/Login/ResetPassword/ResetPassword'
 import RequireAuth from './components/RequireAuth/RequireAuth'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
         <Route path='/resetpassword' element={<ResetPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

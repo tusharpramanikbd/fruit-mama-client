@@ -2,10 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
-import './MyItems.css'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
+import './MyItems.css'
 
 const MyItems = () => {
   const [user] = useAuthState(auth)
@@ -42,7 +42,7 @@ const MyItems = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container myItems-container'>
       <h2 className='text-center mt-3'>My Items</h2>
       <TitleUnderline />
       <Table striped bordered hover>
