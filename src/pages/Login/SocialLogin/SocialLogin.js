@@ -14,6 +14,10 @@ const SocialLogin = () => {
   const from = location.state?.from?.pathname || '/'
   let errorElement, loadingElement
 
+  // const signInWithGoogleAuth = async () => {
+  //   await signInWithGoogle()
+  // }
+
   if (loading) {
     loadingElement = (
       <div className='d-block text-center mt-3'>
@@ -27,8 +31,20 @@ const SocialLogin = () => {
   }
 
   useEffect(() => {
-    if (user) {
+    const getToken = async (email) => {
+      const response = await fetch('http://localhost:5000/signin', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+      const data = await response.json()
+      localStorage.setItem('accessToken', data.accessToken)
       navigate(from, { replace: true })
+    }
+    if (user) {
+      getToken(user.user.email)
     }
   }, [user, from, navigate])
 

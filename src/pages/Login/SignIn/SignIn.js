@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -18,12 +18,22 @@ const SignIn = () => {
   const from = location.state?.from?.pathname || '/'
   let errorElement
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault()
     const email = event.target.email.value
     const password = event.target.password.value
 
-    signInWithEmailAndPassword(email, password)
+    await signInWithEmailAndPassword(email, password)
+    const response = await fetch('http://localhost:5000/signin', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+    const data = await response.json()
+    localStorage.setItem('accessToken', data.accessToken)
+    navigate(from, { replace: true })
   }
 
   const navigateToSignup = () => {
@@ -33,11 +43,6 @@ const SignIn = () => {
   const navigateToForgotPassword = () => {
     navigate('/resetpassword')
   }
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true })
-    }
-  }, [user, from, navigate])
 
   if (loading) {
     return <Loading />

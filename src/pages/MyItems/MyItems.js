@@ -14,8 +14,13 @@ const MyItems = () => {
   const [fruitItems, setFruitItems] = useState([])
 
   useEffect(() => {
-    const url = `https://young-citadel-59712.herokuapp.com/fruits?email=${email}`
-    fetch(url)
+    console.log(email)
+    const url = `http://localhost:5000/fruitsbyemail?email=${email}`
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setFruitItems(data)
