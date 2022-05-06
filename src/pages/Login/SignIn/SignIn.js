@@ -24,13 +24,16 @@ const SignIn = () => {
     const password = event.target.password.value
 
     await signInWithEmailAndPassword(email, password)
-    const response = await fetch('http://localhost:5000/signin', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({ email }),
-    })
+    const response = await fetch(
+      'https://young-citadel-59712.herokuapp.com/signin',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      }
+    )
     const data = await response.json()
     localStorage.setItem('accessToken', data.accessToken)
     navigate(from, { replace: true })

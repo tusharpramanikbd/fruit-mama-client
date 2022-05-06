@@ -14,10 +14,6 @@ const SocialLogin = () => {
   const from = location.state?.from?.pathname || '/'
   let errorElement, loadingElement
 
-  // const signInWithGoogleAuth = async () => {
-  //   await signInWithGoogle()
-  // }
-
   if (loading) {
     loadingElement = (
       <div className='d-block text-center mt-3'>
@@ -32,13 +28,16 @@ const SocialLogin = () => {
 
   useEffect(() => {
     const getToken = async (email) => {
-      const response = await fetch('http://localhost:5000/signin', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      })
+      const response = await fetch(
+        'https://young-citadel-59712.herokuapp.com/signin',
+        {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        }
+      )
       const data = await response.json()
       localStorage.setItem('accessToken', data.accessToken)
       navigate(from, { replace: true })

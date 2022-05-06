@@ -15,7 +15,7 @@ const MyItems = () => {
 
   useEffect(() => {
     console.log(email)
-    const url = `http://localhost:5000/fruitsbyemail?email=${email}`
+    const url = `https://young-citadel-59712.herokuapp.com/fruitsbyemail?email=${email}`
     fetch(url, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
