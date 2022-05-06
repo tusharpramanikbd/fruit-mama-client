@@ -11,6 +11,7 @@ import {
 import auth from '../../../firebase.init'
 import { signOut } from 'firebase/auth'
 import Loading from '../../../components/Loading/Loading'
+import PageTitle from '../../../components/PageTitle/PageTitle'
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, userError] =
@@ -57,6 +58,7 @@ const SignUp = () => {
 
   return (
     <div className='container'>
+      <PageTitle title='SignUp' />
       <h2 className='text-center mt-3'>SignUp User</h2>
       <TitleUnderline />
       <div className='signup-container'>

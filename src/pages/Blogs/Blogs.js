@@ -1,10 +1,12 @@
 import React from 'react'
+import PageTitle from '../../components/PageTitle/PageTitle'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import './Blogs.css'
 
 const Blogs = () => {
   return (
     <div className='container blogs-container'>
+      <PageTitle title='Blogs' />
       <h2 className='text-center mt-3'>Question-Answer Section</h2>
       <TitleUnderline />
       <h2 className='mt-5'>Difference between javascript and nodejs?</h2>

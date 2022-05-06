@@ -6,6 +6,7 @@ import './AddInventoryItem.css'
 import { ToastContainer, toast } from 'react-toastify'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
+import PageTitle from '../../components/PageTitle/PageTitle'
 
 const AddInventoryItem = () => {
   const [user] = useAuthState(auth)
@@ -27,6 +28,7 @@ const AddInventoryItem = () => {
   }
   return (
     <div className='container'>
+      <PageTitle title='Add Item' />
       <h2 className='text-center mt-3'>Add Inventory Item</h2>
       <TitleUnderline />
       <div>

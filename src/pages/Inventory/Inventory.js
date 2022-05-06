@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
+import PageTitle from '../../components/PageTitle/PageTitle'
 import './Inventory.css'
 
 const Inventory = () => {
@@ -60,6 +61,7 @@ const Inventory = () => {
   }, [id])
   return (
     <div className='container section-inventory-details'>
+      <PageTitle title='Inventory' />
       <div className='inventory-details-container'>
         <img src={image} alt='fruit' className='inventory-image' />
         <h5 className='my-3'>{name}</h5>

@@ -8,6 +8,7 @@ import auth from '../../firebase.init'
 import './MyItems.css'
 import Loading from '../../components/Loading/Loading'
 import { ToastContainer, toast } from 'react-toastify'
+import PageTitle from '../../components/PageTitle/PageTitle'
 
 const MyItems = () => {
   const [user] = useAuthState(auth)
@@ -52,6 +53,7 @@ const MyItems = () => {
 
   return (
     <div className='container myItems-container'>
+      <PageTitle title='My Items' />
       <h2 className='text-center mt-3'>My Items</h2>
       <TitleUnderline />
       {isMyItemLoading ? (

@@ -5,6 +5,7 @@ import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init'
 import { ToastContainer, toast } from 'react-toastify'
 import './ResetPassword.css'
+import PageTitle from '../../../components/PageTitle/PageTitle'
 
 const ResetPassword = () => {
   const [sendPasswordResetEmail, sending, error] =
@@ -31,6 +32,7 @@ const ResetPassword = () => {
   return (
     <div>
       <div className='container resetpassword-container'>
+        <PageTitle title='Reset Password' />
         <h2 className='text-center mt-3'>Reset Password</h2>
         <TitleUnderline />
         <div>

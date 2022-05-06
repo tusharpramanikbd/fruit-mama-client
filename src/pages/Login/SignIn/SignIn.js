@@ -7,6 +7,7 @@ import auth from '../../../firebase.init'
 import SocialLogin from '../SocialLogin/SocialLogin'
 import Loading from '../../../components/Loading/Loading'
 import './SignIn.css'
+import PageTitle from '../../../components/PageTitle/PageTitle'
 
 const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -57,6 +58,7 @@ const SignIn = () => {
 
   return (
     <div className='container'>
+      <PageTitle title='SignIn' />
       <h2 className='text-center mt-3'>SignIn User</h2>
       <TitleUnderline />
       <div className='login-container'>

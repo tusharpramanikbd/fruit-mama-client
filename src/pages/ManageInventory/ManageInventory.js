@@ -8,6 +8,7 @@ import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/Loading/Loading'
 import { ToastContainer, toast } from 'react-toastify'
+import PageTitle from '../../components/PageTitle/PageTitle'
 
 const ManageInventory = () => {
   const navigate = useNavigate()
@@ -39,6 +40,7 @@ const ManageInventory = () => {
 
   return (
     <div className='container manage-inventory-container'>
+      <PageTitle title='Manage Inventory' />
       <h2 className='text-center mt-3'>Inventory Items</h2>
       <TitleUnderline />
       <div className='text-end'>
