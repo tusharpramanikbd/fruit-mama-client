@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import { signOut } from 'firebase/auth'
+import logo from '../../images/fruit.png'
 
 const MyNavbar = () => {
   const [user] = useAuthState(auth)
@@ -20,8 +21,20 @@ const MyNavbar = () => {
           onClick={() => {
             navigate('/')
           }}
-          style={{ cursor: 'pointer' }}
+          style={{
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
+          <img
+            src={logo}
+            width='40'
+            height='40'
+            className='d-inline-block align-top'
+            alt='React Bootstrap logo'
+          />
           Fruit Mama
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
