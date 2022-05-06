@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import './AddInventoryItem.css'
+import { ToastContainer, toast } from 'react-toastify'
 
 const AddInventoryItem = () => {
   const { register, handleSubmit } = useForm()
@@ -16,7 +17,7 @@ const AddInventoryItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        toast('Fruit Item Added')
         event.target.reset()
       })
   }
@@ -102,6 +103,7 @@ const AddInventoryItem = () => {
           </div>
         </Form>
       </div>
+      <ToastContainer />
     </div>
   )
 }

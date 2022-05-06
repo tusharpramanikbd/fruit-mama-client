@@ -9,15 +9,20 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
+import Loading from '../Loading/Loading'
 import TitleUnderline from '../TitleUnderline/TitleUnderline'
 import './SalesChart.css'
 
 const SalesChart = () => {
   const [salesData, setSalesData] = useState([])
+  const [isChartLoading, setIsChartLoading] = useState(true)
   useEffect(() => {
     fetch('https://young-citadel-59712.herokuapp.com/sales')
       .then((res) => res.json())
-      .then((data) => setSalesData(data))
+      .then((data) => {
+        setSalesData(data)
+        setIsChartLoading(false)
+      })
   }, [])
 
   return (
@@ -26,16 +31,21 @@ const SalesChart = () => {
       <TitleUnderline />
       <div>
         <h2 className='text-center chart-label'>Yearly Sales</h2>
-        <ResponsiveContainer width='100%' height={400}>
-          <BarChart data={salesData}>
-            <CartesianGrid strokeDasharray='5 5' />
-            <XAxis dataKey='month' />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey='sell' stackId='a' fill='#8884d8' />
-          </BarChart>
-        </ResponsiveContainer>
+
+        {isChartLoading ? (
+          <Loading />
+        ) : (
+          <ResponsiveContainer width='100%' height={400}>
+            <BarChart data={salesData}>
+              <CartesianGrid strokeDasharray='5 5' />
+              <XAxis dataKey='month' />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey='sell' stackId='a' fill='#8884d8' />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </div>
   )

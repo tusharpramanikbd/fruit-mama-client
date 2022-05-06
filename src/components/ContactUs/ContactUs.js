@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { toast, ToastContainer } from 'react-toastify'
 import TitleUnderline from '../TitleUnderline/TitleUnderline'
-import 'react-toastify/dist/ReactToastify.css'
 import './ContactUs.css'
 
 const ContactUs = () => {

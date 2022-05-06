@@ -6,12 +6,15 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import './MyItems.css'
+import Loading from '../../components/Loading/Loading'
+import { ToastContainer, toast } from 'react-toastify'
 
 const MyItems = () => {
   const [user] = useAuthState(auth)
   const email = user.email
 
   const [fruitItems, setFruitItems] = useState([])
+  const [isMyItemLoading, setIsMyItemLoading] = useState(true)
 
   useEffect(() => {
     console.log(email)
@@ -24,6 +27,7 @@ const MyItems = () => {
       .then((res) => res.json())
       .then((data) => {
         setFruitItems(data)
+        setIsMyItemLoading(false)
       })
   }, [email])
 
@@ -41,6 +45,7 @@ const MyItems = () => {
               (fruit) => fruit._id !== id
             )
             setFruitItems(filteredFruitItems)
+            toast('Fruit item is deleted')
           }
         })
     }
@@ -50,34 +55,39 @@ const MyItems = () => {
     <div className='container myItems-container'>
       <h2 className='text-center mt-3'>My Items</h2>
       <TitleUnderline />
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {fruitItems.map((fruit) => {
-            return (
-              <tr key={fruit._id}>
-                <td>{fruit.name}</td>
-                <td>{fruit.price}</td>
-                <td>{fruit.quantity}</td>
-                <td className='text-center'>
-                  <FontAwesomeIcon
-                    onClick={() => trashButtonClickHandler(fruit._id)}
-                    className='btn-trash'
-                    icon={faTrash}
-                  />
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </Table>
+      {isMyItemLoading ? (
+        <Loading />
+      ) : (
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fruitItems.map((fruit) => {
+              return (
+                <tr key={fruit._id}>
+                  <td>{fruit.name}</td>
+                  <td>{fruit.price}</td>
+                  <td>{fruit.quantity}</td>
+                  <td className='text-center'>
+                    <FontAwesomeIcon
+                      onClick={() => trashButtonClickHandler(fruit._id)}
+                      className='btn-trash'
+                      icon={faTrash}
+                    />
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+      )}
+      <ToastContainer />
     </div>
   )
 }
