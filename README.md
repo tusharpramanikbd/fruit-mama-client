@@ -1,10 +1,15 @@
 # Website Name: Fruit Mama (Client Side)
 
-Live Link: https://fruit-mama-client.web.app/
+## Description
+
+This is a client side app for fruit inventory management system. This website is created with reactjs library. Bootstrap and vanilla css are used to implemented the design. This website can be used to modify the quantity of the fruits, add fruits, delete fruits. New suppliers can also contact the website owner with the contact us section.
+
+## Live Link:
+
+https://fruit-mama-client.web.app/
 
 ## Features and Functionality
 
-- This is a fruit inventory management system.
 - You can create account with email and password and verify email else you can signin with google.
 - You can login with your email and password.
 - You can reset your password if you forgot.
