@@ -6,7 +6,6 @@ import './FruitItems.css'
 
 const FruitItems = () => {
   const [fruitItems, setFruitItems, isLoading] = useFruitItems()
-  console.log(isLoading)
   return (
     <div id='inventory'>
       <section className='container section-fruit-items'>

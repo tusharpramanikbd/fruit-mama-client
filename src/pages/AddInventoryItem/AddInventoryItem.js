@@ -4,10 +4,14 @@ import { useForm } from 'react-hook-form'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import './AddInventoryItem.css'
 import { ToastContainer, toast } from 'react-toastify'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init'
 
 const AddInventoryItem = () => {
+  const [user] = useAuthState(auth)
   const { register, handleSubmit } = useForm()
   const addInventoryItemOnSubmit = (fruitData, event) => {
+    console.log(fruitData)
     fetch('https://young-citadel-59712.herokuapp.com/fruits', {
       method: 'POST',
       headers: {
@@ -63,18 +67,18 @@ const AddInventoryItem = () => {
             <Form.Label>Supplier Name</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Supplier Name'
+              value={user.displayName}
+              contentEditable={false}
               {...register('supplier')}
-              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Label>Email</Form.Label>
             <Form.Control
               type='email'
-              placeholder='Email'
+              value={user.email}
+              contentEditable={false}
               {...register('email')}
-              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicImageURL'>

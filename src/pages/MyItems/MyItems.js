@@ -17,7 +17,6 @@ const MyItems = () => {
   const [isMyItemLoading, setIsMyItemLoading] = useState(true)
 
   useEffect(() => {
-    console.log(email)
     const url = `https://young-citadel-59712.herokuapp.com/fruitsbyemail?email=${email}`
     fetch(url, {
       headers: {
