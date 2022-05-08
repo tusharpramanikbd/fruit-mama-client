@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import PageTitle from '../../components/PageTitle/PageTitle'
 import './Inventory.css'
 import { ToastContainer, toast } from 'react-toastify'
+import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
+import Loading from '../../components/Loading/Loading'
 
 const Inventory = () => {
   const { id } = useParams()
@@ -13,6 +15,7 @@ const Inventory = () => {
   const [quantity, setQuantity] = useState(0)
   const [description, setDescription] = useState('')
   const [supplier, setSupplier] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
   const updateFruitQuantity = (fruit, message) => {
@@ -67,45 +70,63 @@ const Inventory = () => {
         setQuantity(data.quantity)
         setDescription(data.desc)
         setSupplier(data.supplier)
+        setIsLoading(false)
       })
   }, [id])
   return (
-    <div className='container section-inventory-details'>
+    <div className='container inventory-container'>
       <PageTitle title='Inventory' />
-      <div className='inventory-details-container'>
-        <img src={image} alt='fruit' className='inventory-image' />
-        <h5 className='my-3'>{name}</h5>
-        <h6 className='text-start'>Id: {id}</h6>
-        <h6 className='text-start'>Price: ${price}</h6>
-        <h6 className='text-start'>Quantity: {quantity}</h6>
-        <h6 className='text-start'>Supplier Name: {supplier}</h6>
-        <p className='fruit-item-text text-start'>
-          <small>{description}</small>
-        </p>
-        <button onClick={deliverButtonClickHandler} className='inventory-btn'>
-          Delivered
-        </button>
-      </div>
-      <div>
-        <Form onSubmit={restockFromSubmitHandler}>
-          <Form.Group className='mb-3'>
-            <Form.Label>Restock The Items</Form.Label>
-            <Form.Control
-              type='number'
-              name='restock'
-              placeholder='Enter Item Number'
-              className='w-75 mx-auto'
-            />
-          </Form.Group>
-          <button className='inventory-btn'>Restock</button>
-        </Form>
-        <button
-          onClick={manageInventoryButtonClickHandler}
-          className='inventory-btn mt-3'
-        >
-          Manage Inventory
-        </button>
-      </div>
+      <h2 className='text-center mt-3'>Inventory Item Details</h2>
+      <TitleUnderline />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className='border p-3 p-md-5 rounded shadow section-inventory-details'>
+          <div className='article-a'>
+            <img src={image} alt='fruit' className='inventory-image' />
+          </div>
+          <div className='article-b'>
+            <h3 className='my-3 text-center'>{name}</h3>
+            <h6 className='text-start'>Id: {id}</h6>
+            <h6 className='text-start'>Price: ${price}</h6>
+            <h6 className='text-start'>Quantity: {quantity}</h6>
+            <h6 className='text-start'>Supplier Name: {supplier}</h6>
+            <p className='fruit-item-text text-start'>
+              <small>{description}</small>
+            </p>
+            <div className='text-center'>
+              <button
+                onClick={deliverButtonClickHandler}
+                className='inventory-btn'
+              >
+                Delivered
+              </button>
+            </div>
+          </div>
+          <div className='text-center mt-3 article-c'>
+            <Form onSubmit={restockFromSubmitHandler}>
+              <Form.Group className='mb-3'>
+                <Form.Label>
+                  <h3>Restock The Items</h3>
+                </Form.Label>
+                <Form.Control
+                  type='number'
+                  name='restock'
+                  placeholder='Enter Item Number'
+                  className='w-75 mx-auto'
+                />
+              </Form.Group>
+              <button className='inventory-btn'>Restock</button>
+            </Form>
+            <button
+              onClick={manageInventoryButtonClickHandler}
+              className='inventory-btn mt-3'
+            >
+              Manage Inventory
+            </button>
+          </div>
+        </div>
+      )}
       <ToastContainer />
     </div>
   )
