@@ -10,14 +10,14 @@
   color: rgb(250, 125, 125) !important;
 }
 .btn-add-new-item {
-  background-color: green;
+  background-color: blueviolet;
   border: 1px solid gray;
   color: white;
   padding: 0.5rem 1rem;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-bottom: 0.5rem;
   transition: background-color 0.2s linear;
 }
 .btn-add-new-item:hover {
-  background-color: rgb(58, 216, 58);
+  background-color: rgb(166, 91, 236);
 }
