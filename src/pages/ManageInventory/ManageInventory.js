@@ -51,10 +51,11 @@ const ManageInventory = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <Table striped bordered hover>
+        <Table striped bordered hover responsive>
           <thead>
             <tr>
               <th>Name</th>
+              <th>Supplier Name</th>
               <th>Email</th>
               <th>Price</th>
               <th>Quantity</th>
@@ -66,6 +67,7 @@ const ManageInventory = () => {
               return (
                 <tr key={fruit._id}>
                   <td>{fruit.name}</td>
+                  <td>{fruit.supplier}</td>
                   <td>{fruit.email}</td>
                   <td>{fruit.price}</td>
                   <td>{fruit.quantity}</td>

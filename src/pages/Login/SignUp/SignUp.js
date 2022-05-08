@@ -65,7 +65,7 @@ const SignUp = () => {
         <div>
           <Form
             onSubmit={handleRegister}
-            className='border p-5 rounded shadow signup-form'
+            className='border p-3 p-md-5 rounded shadow signup-form'
           >
             <Form.Group className='mb-3 text-start' controlId='formBasicName'>
               <Form.Label>Name</Form.Label>

@@ -72,7 +72,7 @@ const SignIn = () => {
         <div>
           <Form
             onSubmit={handleLogin}
-            className='border p-5 rounded shadow login-form'
+            className='border p-3 p-md-5 rounded shadow login-form'
           >
             <Form.Group className='mb-3 text-start' controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>

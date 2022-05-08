@@ -38,7 +38,7 @@ const ResetPassword = () => {
         <div>
           <Form
             onSubmit={handleForgotPassword}
-            className='border p-5 rounded shadow resetpassword-form'
+            className='border p-3 p-md-5 rounded shadow resetpassword-form'
           >
             <Form.Group className='mb-3 text-start' controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>
