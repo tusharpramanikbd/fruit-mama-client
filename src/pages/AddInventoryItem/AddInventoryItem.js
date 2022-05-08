@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import './AddInventoryItem.css'
@@ -103,9 +103,9 @@ const AddInventoryItem = () => {
             />
           </Form.Group>
           <div className='text-center'>
-            <Button variant='primary' type='submit'>
+            <button className='inventory-btn' type='submit'>
               Add Item
-            </Button>
+            </button>
           </div>
         </Form>
       </div>

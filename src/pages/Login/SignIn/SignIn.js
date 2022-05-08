@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
@@ -19,25 +19,12 @@ const SignIn = () => {
   const from = location.state?.from?.pathname || '/'
   let errorElement
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault()
     const email = event.target.email.value
     const password = event.target.password.value
 
-    await signInWithEmailAndPassword(email, password)
-    const response = await fetch(
-      'https://young-citadel-59712.herokuapp.com/signin',
-      {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      }
-    )
-    const data = await response.json()
-    localStorage.setItem('accessToken', data.accessToken)
-    navigate(from, { replace: true })
+    signInWithEmailAndPassword(email, password)
   }
 
   const navigateToSignup = () => {
@@ -54,6 +41,26 @@ const SignIn = () => {
 
   if (error) {
     errorElement = <p className='text-danger'>Error: {error.message}</p>
+  }
+
+  if (user) {
+    const getJWT = async () => {
+      const email = user.user.email
+      const response = await fetch(
+        'https://young-citadel-59712.herokuapp.com/signin',
+        {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        }
+      )
+      const data = await response.json()
+      localStorage.setItem('accessToken', data.accessToken)
+      navigate(from, { replace: true })
+    }
+    getJWT()
   }
 
   return (
@@ -89,9 +96,9 @@ const SignIn = () => {
               />
             </Form.Group>
             {errorElement}
-            <Button variant='primary' type='submit'>
+            <button className='inventory-btn' type='submit'>
               SignIn
-            </Button>
+            </button>
           </Form>
           <p className='signup-toggle'>
             Don't have an account?{' '}

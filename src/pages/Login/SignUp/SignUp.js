@@ -109,7 +109,11 @@ const SignUp = () => {
               />
             </Form.Group>
             {errorElement}
-            <Button disabled={!agree} variant='primary' type='submit'>
+            <Button
+              disabled={!agree}
+              className='inventory-btn-signup'
+              type='submit'
+            >
               SignUp
             </Button>
           </Form>

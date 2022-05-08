@@ -13,6 +13,16 @@
   cursor: pointer;
 }
 
+.inventory-btn-signup {
+  border: none !important;
+  padding: 0.75rem 0 !important;
+  border-radius: 20px !important;
+  background-color: blueviolet !important;
+  color: white;
+  width: 75%;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 992px) {
   .signup-form {
     width: 80%;

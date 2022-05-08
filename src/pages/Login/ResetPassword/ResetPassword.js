@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init'
@@ -49,9 +49,9 @@ const ResetPassword = () => {
               />
             </Form.Group>
             {errorElement}
-            <Button variant='primary' type='submit'>
+            <button className='inventory-btn' type='submit'>
               Reset Password
-            </Button>
+            </button>
           </Form>
           <ToastContainer />
         </div>
