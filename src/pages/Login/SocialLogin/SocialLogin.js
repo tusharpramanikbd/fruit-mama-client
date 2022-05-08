@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import './SocialLogin.css'
 import google from '../../../images/social/google.png'
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap'
+import './SocialLogin.css'
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth)

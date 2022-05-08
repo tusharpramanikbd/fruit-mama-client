@@ -2,11 +2,11 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
-import './AddInventoryItem.css'
 import { ToastContainer, toast } from 'react-toastify'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import PageTitle from '../../components/PageTitle/PageTitle'
+import './AddInventoryItem.css'
 
 const AddInventoryItem = () => {
   const [user] = useAuthState(auth)

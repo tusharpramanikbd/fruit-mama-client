@@ -20,7 +20,6 @@ const ContactUs = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         toast('Thank you for your query')
         event.target.reset()
       })

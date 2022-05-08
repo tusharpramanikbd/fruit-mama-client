@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import PageTitle from '../../components/PageTitle/PageTitle'
-import './Inventory.css'
 import { ToastContainer, toast } from 'react-toastify'
 import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import Loading from '../../components/Loading/Loading'
+import './Inventory.css'
 
 const Inventory = () => {
   const { id } = useParams()
@@ -18,6 +18,7 @@ const Inventory = () => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
+  // Update fruit quantity
   const updateFruitQuantity = (fruit, message) => {
     fetch(`https://young-citadel-59712.herokuapp.com/fruits/${id}`, {
       method: 'PUT',
@@ -33,6 +34,7 @@ const Inventory = () => {
       })
   }
 
+  // Deliver Item
   const deliverButtonClickHandler = () => {
     if (quantity >= 1) {
       const newQuantity = quantity - 1
@@ -43,6 +45,7 @@ const Inventory = () => {
     }
   }
 
+  // Restock Item
   const restockFromSubmitHandler = (event) => {
     event.preventDefault()
     const restockAmount = parseInt(event.target.restock.value)
@@ -78,6 +81,7 @@ const Inventory = () => {
       <PageTitle title='Inventory' />
       <h2 className='text-center mt-3'>Inventory Item Details</h2>
       <TitleUnderline />
+      {/* Conditional rendering */}
       {isLoading ? (
         <Loading />
       ) : (

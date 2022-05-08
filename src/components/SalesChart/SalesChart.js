@@ -31,7 +31,7 @@ const SalesChart = () => {
       <TitleUnderline />
       <div>
         <h2 className='text-center chart-label'>Yearly Sales</h2>
-
+        {/* Conditional Rendering */}
         {isChartLoading ? (
           <Loading />
         ) : (

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './SignUp.css'
 import SocialLogin from '../SocialLogin/SocialLogin'
 import { Button, Form } from 'react-bootstrap'
 import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
@@ -12,6 +11,7 @@ import auth from '../../../firebase.init'
 import { signOut } from 'firebase/auth'
 import Loading from '../../../components/Loading/Loading'
 import PageTitle from '../../../components/PageTitle/PageTitle'
+import './SignUp.css'
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, userError] =

@@ -4,8 +4,8 @@ import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth'
 import auth from '../../../firebase.init'
 import { ToastContainer, toast } from 'react-toastify'
-import './ResetPassword.css'
 import PageTitle from '../../../components/PageTitle/PageTitle'
+import './ResetPassword.css'
 
 const ResetPassword = () => {
   const [sendPasswordResetEmail, sending, error] =

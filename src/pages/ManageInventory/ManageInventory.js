@@ -1,6 +1,5 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
-import './ManageInventory.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import useFruitItems from '../../hooks/useFruitItems'
@@ -9,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/Loading/Loading'
 import { ToastContainer, toast } from 'react-toastify'
 import PageTitle from '../../components/PageTitle/PageTitle'
+import './ManageInventory.css'
 
 const ManageInventory = () => {
   const navigate = useNavigate()

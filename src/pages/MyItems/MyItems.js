@@ -5,10 +5,10 @@ import TitleUnderline from '../../components/TitleUnderline/TitleUnderline'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
-import './MyItems.css'
 import Loading from '../../components/Loading/Loading'
 import { ToastContainer, toast } from 'react-toastify'
 import PageTitle from '../../components/PageTitle/PageTitle'
+import './MyItems.css'
 
 const MyItems = () => {
   const [user] = useAuthState(auth)

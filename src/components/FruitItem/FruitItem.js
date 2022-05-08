@@ -4,6 +4,7 @@ import './FruitItem.css'
 
 const FruitItem = (props) => {
   const navigate = useNavigate()
+  // On click redirect to inventory page
   const handleUpdateStock = (id) => {
     navigate(`/inventory/${id}`)
   }

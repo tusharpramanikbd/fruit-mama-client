@@ -6,8 +6,8 @@ import TitleUnderline from '../../../components/TitleUnderline/TitleUnderline'
 import auth from '../../../firebase.init'
 import SocialLogin from '../SocialLogin/SocialLogin'
 import Loading from '../../../components/Loading/Loading'
-import './SignIn.css'
 import PageTitle from '../../../components/PageTitle/PageTitle'
+import './SignIn.css'
 
 const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
