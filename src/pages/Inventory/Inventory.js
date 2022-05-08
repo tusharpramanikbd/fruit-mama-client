@@ -88,6 +88,12 @@ const Inventory = () => {
           <div className='article-b'>
             <h3 className='my-3 text-center'>{name}</h3>
             <h6 className='text-start'>Id: {id}</h6>
+            <h6 className='text-start'>
+              Availability:{' '}
+              <span className={quantity > 0 ? 'text-success' : 'text-danger'}>
+                {quantity > 0 ? 'Available' : 'Sold Out'}
+              </span>
+            </h6>
             <h6 className='text-start'>Price: ${price}</h6>
             <h6 className='text-start'>Quantity: {quantity}</h6>
             <h6 className='text-start'>Supplier Name: {supplier}</h6>
