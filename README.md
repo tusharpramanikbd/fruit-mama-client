@@ -18,6 +18,7 @@ https://fruit-mama-client.web.app/
 - You can create fruit items.
 - On MyItems page, it will only show user created items.
 - The whole website is responsive.
+- Website title changes dynamically according to route.
 
 ## Used Technologies
 
@@ -32,3 +33,4 @@ https://fruit-mama-client.web.app/
 - Fontawesome
 - React Hook Form
 - Recharts
+- React Helmet Async
