@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import PageTitle from '../../components/PageTitle/PageTitle'
 import './Inventory.css'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Inventory = () => {
   const { id } = useParams()
@@ -14,7 +15,7 @@ const Inventory = () => {
   const [supplier, setSupplier] = useState('')
   const navigate = useNavigate()
 
-  const updateFruitQuantity = (fruit) => {
+  const updateFruitQuantity = (fruit, message) => {
     fetch(`https://young-citadel-59712.herokuapp.com/fruits/${id}`, {
       method: 'PUT',
       headers: {
@@ -24,22 +25,31 @@ const Inventory = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        toast(message)
         setQuantity(fruit.newQuantity)
       })
   }
 
   const deliverButtonClickHandler = () => {
-    const newQuantity = quantity - 1
-    const fruit = { newQuantity }
-    updateFruitQuantity(fruit)
+    if (quantity >= 1) {
+      const newQuantity = quantity - 1
+      const fruit = { newQuantity }
+      updateFruitQuantity(fruit, 'Item delivered.')
+    } else {
+      toast('You can not deliver this item. Please restock.')
+    }
   }
 
   const restockFromSubmitHandler = (event) => {
     event.preventDefault()
     const restockAmount = parseInt(event.target.restock.value)
-    const newQuantity = quantity + restockAmount
-    const fruit = { newQuantity }
-    updateFruitQuantity(fruit)
+    if (restockAmount < 1) {
+      toast('Restock value can not be zero or negative.')
+    } else {
+      const newQuantity = quantity + restockAmount
+      const fruit = { newQuantity }
+      updateFruitQuantity(fruit, 'Item restocked.')
+    }
     event.target.reset()
   }
 
@@ -96,6 +106,7 @@ const Inventory = () => {
           Manage Inventory
         </button>
       </div>
+      <ToastContainer />
     </div>
   )
 }
