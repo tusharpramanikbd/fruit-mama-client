@@ -4,7 +4,7 @@ import './NotFound.css'
 
 const NotFound = () => {
   return (
-    <div>
+    <div className='container not-found-container'>
       <PageTitle title='Not Found' />
       <h1>This is not found page</h1>
     </div>
