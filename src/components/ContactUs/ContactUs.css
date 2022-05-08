@@ -1,0 +1,16 @@
+.contact-us-button {
+  border: none !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 20px !important;
+  background-color: blueviolet !important;
+}
+@media screen and (min-width: 768px) {
+  .contact-us-form {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .contact-us-form {
+    width: 60%;
+  }
+}

@@ -10,18 +10,25 @@ const FruitItem = (props) => {
   const { _id, name, image, price, desc, quantity, supplier } = props.fruit
 
   return (
-    <div className='fruit-item-container'>
-      <img src={image} alt={name} className='fruit-item-image' />
-      <h5 className='my-3'>{name}</h5>
-      <h6 className='text-start'>Price: ${price}</h6>
-      <h6 className='text-start'>Quantity: {quantity}</h6>
-      <h6 className='text-start'>Supplier Name: {supplier}</h6>
-      <p className='fruit-item-text text-start'>
-        <small>{desc}</small>
-      </p>
-      <button onClick={() => handleUpdateStock(_id)} className='fruit-item-btn'>
-        Update Stock
-      </button>
+    <div className='card shadow p-2'>
+      <img src={image} className='card-img-top fruit-item-image' alt={name} />
+      <div className='card-body'>
+        <h5 className='card-title text-center'>{name}</h5>
+        <h6>Price: ${price}</h6>
+        <h6>Quantity: {quantity}</h6>
+        <h6>Supplier Name: {supplier}</h6>
+        <p>
+          <small>{desc}</small>
+        </p>
+      </div>
+      <div className='card-footer bg-transparent border-0'>
+        <button
+          onClick={() => handleUpdateStock(_id)}
+          className='fruit-item-btn'
+        >
+          Update Stock
+        </button>
+      </div>
     </div>
   )
 }

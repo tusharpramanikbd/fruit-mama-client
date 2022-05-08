@@ -32,7 +32,7 @@ const ContactUs = () => {
       <div>
         <Form
           onSubmit={contactFormSubmitHandler}
-          className='was-validated w-50 mx-auto border p-5 rounded shadow mb-3'
+          className='was-validated mx-auto border p-3 p-md-5 rounded shadow mb-3 contact-us-form'
         >
           <Form.Group className='mb-3' controlId='formBasicFullName'>
             <Form.Label>Full Name</Form.Label>
@@ -63,10 +63,18 @@ const ContactUs = () => {
             />
           </Form.Group>
           <div className='text-center'>
-            <Button variant='primary' type='submit' className='me-3'>
+            <Button
+              variant='primary'
+              type='submit'
+              className='me-3 contact-us-button'
+            >
               Submit
             </Button>
-            <Button variant='primary' type='reset'>
+            <Button
+              variant='primary'
+              type='reset'
+              className='contact-us-button'
+            >
               Reset
             </Button>
           </div>

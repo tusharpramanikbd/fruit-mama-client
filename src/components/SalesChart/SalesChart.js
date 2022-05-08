@@ -42,7 +42,7 @@ const SalesChart = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey='sell' stackId='a' fill='#8884d8' />
+              <Bar dataKey='sell' stackId='a' fill='#8a2be2' />
             </BarChart>
           </ResponsiveContainer>
         )}
